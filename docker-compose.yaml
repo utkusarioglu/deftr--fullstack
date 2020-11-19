@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  webclient:
+    image: node:alpine
+    container_name: webclient
+    restart: unless-stopped
+    stdin_open: true
+    ports:
+      - 80:3000
+    volumes:
+      - ./api:/usr/home/app/api
+      - ./webclient:/usr/home/app/webclient
+    networks:
+      - frontend
+    working_dir: /usr/home/app/webclient
+    command: "yarn start"
+
+  server:
+    image: node
+    container_name: server-base
+    restart: unless-stopped
+    ports:
+      - 4000:4000
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./api:/usr/home/app/api
+      - ./server:/usr/home/app/server
+    working_dir: /usr/home/app/server/packages/base
+    command: "yarn run start:dev"
+
+
+networks:
+  frontend:
+  backend:
