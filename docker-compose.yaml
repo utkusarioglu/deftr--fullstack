@@ -3,7 +3,7 @@ version: "3.8"
 services:
   webclient:
     image: node:alpine
-    container_name: webclient
+    container_name: newspaper--webclient
     restart: unless-stopped
     stdin_open: true
     ports:
@@ -18,7 +18,7 @@ services:
 
   server:
     image: node
-    container_name: server-base
+    container_name: newspaper--server-base
     restart: unless-stopped
     ports:
       - 4000:4000
@@ -28,9 +28,45 @@ services:
     volumes:
       - ./api:/usr/home/app/api
       - ./server:/usr/home/app/server
-    working_dir: /usr/home/app/server/packages/base
-    command: "yarn run start:dev"
+    working_dir: /usr/home/app/server
+    command: "yarn start:dev"
 
+  redis:
+      image: redis
+      container_name: newspaper--redis
+      ports: 
+        - 6379:6379
+      # command: ["redis-server", "--appendonly", "yes"]
+      privileged: true
+      restart: unless-stopped
+      hostname: redis
+      networks:
+        - backend
+      volumes:
+        - ./server/mounts/redis/config/redis.conf:/usr/local/etc/redis/redis.conf
+        - ./server/mounts/redis/scripts:/scripts
+        - redis-data:/data
+      command: bash -c "/scripts/init.sh"
+
+  postgres:
+      image: postgres
+      container_name: newspaper--postgres
+      hostname: postgres
+      ports: 
+        - 5432:5432
+      networks: 
+        - backend
+      restart: unless-stopped
+      volumes:
+        - postgres-data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_USER: exampleuser
+        POSTGRES_PASSWORD: examplepass
+        POSTGRES_DB: exampledb
+
+volumes:
+  postgres-data: 
+  redis-data:
 
 networks:
   frontend:
