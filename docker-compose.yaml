@@ -36,7 +36,6 @@ services:
       container_name: newspaper--redis
       ports: 
         - 6379:6379
-      # command: ["redis-server", "--appendonly", "yes"]
       privileged: true
       restart: unless-stopped
       hostname: redis
