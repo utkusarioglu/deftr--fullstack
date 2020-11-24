@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  webclient:
+  deftr--webclient:
     image: node:alpine
     container_name: deftr--webclient
     restart: unless-stopped
@@ -16,7 +16,7 @@ services:
     working_dir: /usr/home/app/deftr--webclient
     command: "yarn start"
 
-  server:
+  deftr--server:
     image: node
     container_name: deftr--server
     restart: unless-stopped
@@ -29,12 +29,12 @@ services:
       - ./deftr--public-api:/usr/home/app/deftr--public-api
       - ./deftr--server:/usr/home/app/deftr--server
     depends_on:
-      - postgres
-      # - redis
+      - deftr--postgres
+      # - deftr--redis
     working_dir: /usr/home/app/deftr--server
     command: "yarn start:dev"
 
-  # redis:
+  # deftr--redis:
   #     image: redis
   #     container_name: deftr--redis
   #     ports: 
@@ -50,7 +50,7 @@ services:
   #       - redis-data:/data
   #     command: bash -c "/scripts/init.sh"
 
-  postgres:
+  deftr--postgres:
       image: postgres
       container_name: deftr--postgres
       hostname: postgres

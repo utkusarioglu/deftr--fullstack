@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  webclient:
+  deftr--webclient:
     image: deftr/webclient
     build:
       context: .
@@ -14,7 +14,7 @@ services:
     networks:
       - frontend
 
-  server:
+  deftr--server:
     image: deftr/server
     build: 
       context: .
@@ -24,13 +24,13 @@ services:
     ports:
       - 4000:4000
     depends_on:
-      - postgres
-      # - redis
+      - deftr--postgres
+      # - deftr--redis
     networks:
       - frontend
       - backend
 
-  # redis:
+  # deftr--redis:
   #     image: deftr/redis
   #     build:
   #       context: .
@@ -45,7 +45,7 @@ services:
   #     volumes:
   #       - redis-data:/data
 
-  postgres:
+  deftr--postgres:
       image: deftr/postgres
       build:
         context: .
