@@ -9,11 +9,11 @@ services:
     ports:
       - 80:3000
     volumes:
-      - ./api:/usr/home/app/api
-      - ./webclient:/usr/home/app/webclient
+      - ./deftr--public-api:/usr/home/app/deftr--public-api
+      - ./deftr--webclient:/usr/home/app/deftr--webclient
     networks:
       - frontend
-    working_dir: /usr/home/app/webclient
+    working_dir: /usr/home/app/deftr--webclient
     command: "yarn start"
 
   server:
@@ -26,12 +26,12 @@ services:
       - frontend
       - backend
     volumes:
-      - ./api:/usr/home/app/api
-      - ./server:/usr/home/app/server
+      - ./deftr--public-api:/usr/home/app/deftr--public-api
+      - ./deftr--server:/usr/home/app/deftr--server
     depends_on:
       - postgres
       # - redis
-    working_dir: /usr/home/app/server
+    working_dir: /usr/home/app/deftr--server
     command: "yarn start:dev"
 
   # redis:

@@ -5,7 +5,7 @@ services:
     image: deftr/webclient
     build:
       context: .
-      dockerfile: ./webclient/Dockerfile.webclient.production
+      dockerfile: ./deftr--webclient/Dockerfile.webclient.production
     container_name: deftr--webclient
     restart: on-failure
     stdin_open: true
@@ -18,7 +18,7 @@ services:
     image: deftr/server
     build: 
       context: .
-      dockerfile: ./server/Dockerfile.server.production
+      dockerfile: ./deftr--server/Dockerfile.server.production
     container_name: deftr--server
     restart: on-failure
     ports:
