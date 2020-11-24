@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  webclient:
+    image: newspaper/webclient
+    build:
+      context: .
+      dockerfile: ./webclient/Dockerfile.webclient.production
+    container_name: newspaper--webclient
+    restart: on-failure
+    stdin_open: true
+    ports:
+      - 80:80
+    networks:
+      - frontend
+
+  server:
+    image: newspaper/server
+    build: 
+      context: .
+      dockerfile: ./server/Dockerfile.server.production
+    container_name: newspaper--server
+    restart: on-failure
+    ports:
+      - 4000:4000
+    depends_on:
+      - postgres
+      # - redis
+    networks:
+      - frontend
+      - backend
+
+  # redis:
+  #     image: newspaper/redis
+  #     build:
+  #       context: .
+  #       dockerfile: ./server/Dockerfile.redis.production
+  #     container_name: newspaper--redis
+  #     ports: 
+  #       - 6379:6379
+  #     restart: on-failure
+  #     hostname: redis
+  #     networks:
+  #       - backend
+  #     volumes:
+  #       - redis-data:/data
+
+  postgres:
+      image: newspaper/postgres
+      build:
+        context: .
+        dockerfile: ./server/Dockerfile.postgres.production
+      container_name: newspaper--postgres
+      ports: 
+        - 5432:5432
+      networks: 
+        - backend
+      restart: on-failure
+      volumes:
+        - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data: 
+  redis-data:
+
+networks:
+  frontend:
+  backend:
