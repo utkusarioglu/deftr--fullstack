@@ -2,11 +2,11 @@ version: "3.8"
 
 services:
   webclient:
-    image: newspaper/webclient
+    image: deftr/webclient
     build:
       context: .
       dockerfile: ./webclient/Dockerfile.webclient.production
-    container_name: newspaper--webclient
+    container_name: deftr--webclient
     restart: on-failure
     stdin_open: true
     ports:
@@ -15,11 +15,11 @@ services:
       - frontend
 
   server:
-    image: newspaper/server
+    image: deftr/server
     build: 
       context: .
       dockerfile: ./server/Dockerfile.server.production
-    container_name: newspaper--server
+    container_name: deftr--server
     restart: on-failure
     ports:
       - 4000:4000
@@ -31,11 +31,11 @@ services:
       - backend
 
   # redis:
-  #     image: newspaper/redis
+  #     image: deftr/redis
   #     build:
   #       context: .
   #       dockerfile: ./server/Dockerfile.redis.production
-  #     container_name: newspaper--redis
+  #     container_name: deftr--redis
   #     ports: 
   #       - 6379:6379
   #     restart: on-failure
@@ -46,11 +46,11 @@ services:
   #       - redis-data:/data
 
   postgres:
-      image: newspaper/postgres
+      image: deftr/postgres
       build:
         context: .
         dockerfile: ./server/Dockerfile.postgres.production
-      container_name: newspaper--postgres
+      container_name: deftr--postgres
       ports: 
         - 5432:5432
       networks: 

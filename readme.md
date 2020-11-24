@@ -1,6 +1,6 @@
-# Newspaper Fullstack Webclient Repo
+# deftr Fullstack Webclient Repo
 
-This repo includes the webclient, server and the public api for the Newspaper
+This repo includes the webclient, server and the public api for the deftr
 project.
 
 ## Usage

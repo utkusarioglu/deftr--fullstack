@@ -3,7 +3,7 @@ version: "3.8"
 services:
   webclient:
     image: node:alpine
-    container_name: newspaper--webclient
+    container_name: deftr--webclient
     restart: unless-stopped
     stdin_open: true
     ports:
@@ -18,7 +18,7 @@ services:
 
   server:
     image: node
-    container_name: newspaper--server
+    container_name: deftr--server
     restart: unless-stopped
     ports:
       - 4000:4000
@@ -36,7 +36,7 @@ services:
 
   # redis:
   #     image: redis
-  #     container_name: newspaper--redis
+  #     container_name: deftr--redis
   #     ports: 
   #       - 6379:6379
   #     # privileged: true
@@ -52,7 +52,7 @@ services:
 
   postgres:
       image: postgres
-      container_name: newspaper--postgres
+      container_name: deftr--postgres
       hostname: postgres
       ports: 
         - 5432:5432
