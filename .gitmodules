@@ -1,9 +1,9 @@
-[submodule "webclient"]
-	path = webclient
-	url = ./webclient
-[submodule "server"]
-	path = server
-	url = ./server
-[submodule "api"]
-	path = api
-	url = ./api
+[submodule "deftr--webclient"]
+	path = deftr--webclient
+	url = ./deftr--webclient
+[submodule "deftr--server"]
+	path = deftr--server
+	url = ./deftr--server
+[submodule "deftr--public-api"]
+	path = deftr--public-api
+	url = ./deftr--public-api
