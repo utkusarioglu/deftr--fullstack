@@ -34,7 +34,7 @@ services:
   #     image: deftr/redis
   #     build:
   #       context: .
-  #       dockerfile: ./server/Dockerfile.redis.production
+  #       dockerfile: ./deftr--server/Dockerfile.redis.production
   #     container_name: deftr--redis
   #     ports: 
   #       - 6379:6379
@@ -49,7 +49,7 @@ services:
       image: deftr/postgres
       build:
         context: .
-        dockerfile: ./server/Dockerfile.postgres.production
+        dockerfile: ./deftr--server/Dockerfile.postgres.production
       container_name: deftr--postgres
       ports: 
         - 5432:5432

@@ -45,8 +45,8 @@ services:
   #     networks:
   #       - backend
   #     volumes:
-  #       - ./server/mounts/redis/config/redis.conf:/usr/local/etc/redis/redis.conf
-  #       - ./server/mounts/redis/scripts:/scripts
+  #       - ./deftr--server/mounts/redis/config/redis.conf:/usr/local/etc/redis/redis.conf
+  #       - ./deftr--server/mounts/redis/scripts:/scripts
   #       - redis-data:/data
   #     command: bash -c "/scripts/init.sh"
 
