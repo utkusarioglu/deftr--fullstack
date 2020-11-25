@@ -1,4 +1,4 @@
-# deftr Fullstack Webclient Repo
+# Deftr Fullstack Parent Repo
 
 This repo includes the webclient, server and the public api for the deftr
 project.
