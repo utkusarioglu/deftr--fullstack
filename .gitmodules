@@ -1,9 +1,9 @@
 [submodule "deftr--webclient"]
 	path = deftr--webclient
-	url = ./deftr--webclient
+	url = https://github.com/utkusarioglu/deftr--webclient.git
 [submodule "deftr--server"]
 	path = deftr--server
-	url = ./deftr--server
+	url = https://github.com/utkusarioglu/deftr--server.git
 [submodule "deftr--public-api"]
 	path = deftr--public-api
-	url = ./deftr--public-api
+	url = https://github.com/utkusarioglu/deftr--public-api.git
